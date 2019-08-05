@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JTextField;
-import com.joe.test.Test;
+import com.joe.test.BusUtil;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -118,8 +118,8 @@ public class Busui {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				lineName = LineName.getText();
-				new Test();
-				bus = Test.selectLine(lineName);
+				new BusUtil();
+				bus = BusUtil.selectLine(lineName);
 				box1.removeAllItems();
 				box1.addItem(bus.get(0).split(" ")[0]);
 				box1.addItem(bus.get(1).split(" ")[0]);
@@ -140,8 +140,8 @@ public class Busui {
 				// TODO Auto-generated method stub
 				int lineIndex = box1.getSelectedIndex();
 				lineID = bus.get(lineIndex).split(" ")[1];
-				new Test();
-				station = Test.getStationList(lineName, lineID);
+				new BusUtil();
+				station = BusUtil.getStationList(lineName, lineID);
 				for (int i = 0; i < station.size(); i++) {
 					box2.addItem(station.get(i));
 				}
@@ -152,7 +152,7 @@ public class Busui {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				int stationIndex = box2.getSelectedIndex();
-				String result = new Test().getArrivingTime(lineName, lineID, stationIndex);
+				String result = new BusUtil().getArrivingTime(lineName, lineID, stationIndex);
 				System.out.println(lineName + " " + lineID + " " + stationIndex);
 				formattedTextField.setText(result);
 			}
